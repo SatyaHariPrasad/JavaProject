@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+<bean id="bs" class="com.nt.service.BankService"/>
+<bean id="laa" class="com.nt.advice.LoanApporvalAdvice"/>
+
+
+
+<bean id="pfb" class="org.springframework.aop.framework.ProxyFactoryBean">
+<property name="target" ref="bs"/>
+<property name="interceptorNames">
+
+<array>
+
+<value>laa</value>
+
+</array>
+
+</property>
+
+
+</bean>
+</beans>
